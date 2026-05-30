@@ -8,11 +8,6 @@ function Login(){
         <div>
             <h2>Login</h2>
         </div>
-        <input 
-            type="email"
-            value={email}
-            onChange = {(e) => setEmail(e.target.value)}
-        ></input>
     )
 }
 
