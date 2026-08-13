@@ -54,7 +54,7 @@ function Login(){
 
                 <p className="text-center text-sm text-gray-400 mt-8">
                     Don't have an account?{' '}
-                    <span className="text-gray-900 cursor-pointer font-medium">Register</span>
+                    <span onClick={() => navigate('/register')} className="text-gray-900 cursor-pointer font-medium">Register</span>   
                 </p>
             </div>
         </div>
