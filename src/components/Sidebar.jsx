@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate  } from "react-router-dom";
 import{
     LayoutDashboard,
     ArrowLeftRight,
@@ -19,6 +19,12 @@ const navItems =[
 ];
 
 export default function Sidebar(){
+    const navigate = useNavigate()
+
+    const handleLogout = () =>{
+        localStorage.removeItem('token')
+        navigate('/')
+    }
     return(
         <div className="h-screen w-60 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 flex flex-col px-4 py-6 fixed">
                 <div className="mb-10 px-2">
@@ -44,7 +50,7 @@ export default function Sidebar(){
             ))}
         </nav>
 
-        <button className="flex items-center gap-3 px-3 py-2.5 text-sm text-gray-400 hover:text-red-500 transition-all">
+        <button onClick={handleLogout} className="flex items-center gap-3 px-3 py-2.5 text-sm text-gray-400 hover:text-red-500 transition-all">
             <LogOut size={18} />
             Log out
         </button>
