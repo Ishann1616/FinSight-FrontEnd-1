@@ -5,6 +5,7 @@ import Dashboard from "./components/Dashboard";
 import Register from "./components/Register";
 import Transactions from "./components/Transactions";
 import Budget from "./components/Budget";
+import Forecast from "./components/Forecast";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
         <Route path="/transactions" element={<Layout><Transactions /></Layout>} />
         <Route path="/budget" element={<Layout><Budget /></Layout>} />
+        <Route path="/forecast" element={<Layout><Forecast /></Layout>} />
       </Routes>
     </BrowserRouter>
   );
