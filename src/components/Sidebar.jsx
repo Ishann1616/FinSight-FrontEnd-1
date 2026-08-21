@@ -14,7 +14,7 @@ const navItems =[
     { label: "Transactions", icon: ArrowLeftRight, path: "/transactions" },
     { label: "Budget", icon: Wallet, path: "/budget" },
     { label: "Forecast", icon: TrendingUp, path: "/forecast" },
-    { label: "SIP & Loans", icon: PiggyBank, path: "/sip" },
+    { label: "SIP & Loans", icon: PiggyBank, path: "/sip-loans" },
     { label: "AI Chat", icon: MessageCircle, path: "/chat" },
 ];
 
