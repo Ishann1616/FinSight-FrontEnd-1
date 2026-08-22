@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 function Register() {
     const [step, setStep] = useState(1)
@@ -26,7 +27,7 @@ function Register() {
 
     const handleSubmit = async () => {
         try {
-            await axios.post('http://localhost:8000/auth/register', {
+            await axios.post(`${API_URL}/auth/register`, {
                 name: name,
                 email: email,
                 password: password,
@@ -34,7 +35,7 @@ function Register() {
                 current_balance: parseFloat(currentBalance)
             })
 
-            const loginResponse = await axios.post('http://localhost:8000/auth/login', {
+            const loginResponse = await axios.post(`${API_URL}/auth/login`, {
                 email: email,
                 password: password
             })

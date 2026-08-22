@@ -2,6 +2,7 @@ import { useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Eye, EyeOff } from 'lucide-react'
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 function Login(){
     const[email, setEmail]= useState('')
@@ -13,8 +14,9 @@ function Login(){
     const handleLogin = async(e) =>{
         e.preventDefault()
         setError('')
+        
         try{
-            const response= await axios.post('http://localhost:8000/auth/login',{
+            const response = await axios.post(`${API_URL}/auth/login`, {
                 email:email,
                 password: password
             })

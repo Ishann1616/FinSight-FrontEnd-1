@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import { Upload, FileText, CheckCircle, XCircle } from "lucide-react"
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 function Transactions(){
     const [file, setFile] = useState(null)
@@ -25,7 +26,7 @@ function Transactions(){
         const token = localStorage.getItem('token')
 
         try{
-            const response = await axios.post('http://localhost:8000/transactions/upload', formData, {
+            const response = await axios.post(`${API_URL}/transactions/upload`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data'

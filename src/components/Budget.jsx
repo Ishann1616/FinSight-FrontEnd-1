@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 function Budget(){
     const [alerts, setAlerts] = useState([])
@@ -11,7 +12,7 @@ function Budget(){
     const fetchAlerts = async () => {
         const token = localStorage.getItem('token')
         try {
-            const response = await axios.get('http://localhost:8000/budget/alerts', {
+            const response = await axios.get(`${API_URL}/budget/alerts`, {
                 headers: { Authorization: `Bearer ${token}` }
             })
             setAlerts(response.data)
@@ -30,7 +31,7 @@ function Budget(){
         e.preventDefault()
         const token = localStorage.getItem('token')
         try {
-            await axios.post('http://localhost:8000/budget/', {
+            await axios.post(`${API_URL}/budget/`, {
                 category: category,
                 limit: parseFloat(limit)
             }, {

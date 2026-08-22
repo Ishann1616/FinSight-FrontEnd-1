@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 function Forecast() {
     const [predicted, setPredicted] = useState(0)
@@ -13,8 +14,8 @@ function Forecast() {
             const headers = { Authorization: `Bearer ${token}` }
             try {
                 const [predRes, accRes] = await Promise.all([
-                    axios.get('http://localhost:8000/predict/next-months', { headers }),
-                    axios.get('http://localhost:8000/predict/accuracy', { headers })
+                    axios.get(`${API_URL}/predict/next-months`, { headers }),
+                    axios.get(`${API_URL}/predict/accuracy`, { headers })
                 ])
                 setPredicted(predRes.data.predicted_total)
                 setAccuracy(accRes.data.accuracy_percent)

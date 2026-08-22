@@ -1,6 +1,7 @@
 import { useState , useEffect } from 'react'
 import axios from 'axios'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts'
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 
 function Dashboard(){
@@ -42,9 +43,9 @@ function Dashboard(){
 
         try {
             const [meRes, summaryRes, transRes] = await Promise.all([
-                axios.get('http://localhost:8000/auth/me', { headers }),
-                axios.get('http://localhost:8000/transactions/summary', { headers }),
-                axios.get('http://localhost:8000/transactions/', { headers })
+                axios.get(`${API_URL}/auth/me`, { headers }),
+                axios.get(`${API_URL}/transactions/summary`, { headers }),
+                axios.get(`${API_URL}/transactions/`, { headers })
             ])
 
             setBalance(meRes.data.current_balance || 0)
