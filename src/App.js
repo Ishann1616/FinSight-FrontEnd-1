@@ -7,6 +7,7 @@ import Transactions from "./components/Transactions";
 import Budget from "./components/Budget";
 import Forecast from "./components/Forecast";
 import SIPLoans from "./components/SIPLoans";
+import AIChat from "./components/AIChat";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path="/transactions" element={<Layout><Transactions /></Layout>} />
         <Route path="/budget" element={<Layout><Budget /></Layout>} />
         <Route path="/forecast" element={<Layout><Forecast /></Layout>} />
-        <Route path="/sip-loans" element={<SIPLoans />} />
+        <Route path="/sip-loans" element={<Layout><SIPLoans /></Layout>} />
+        <Route path="/chat" element={<Layout><AIChat /></Layout>} />
       </Routes>
     </BrowserRouter>
   );
