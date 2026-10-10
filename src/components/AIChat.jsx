@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 const ROLEX_GREEN = "#006039";
@@ -7,6 +8,13 @@ const APPLE_BLUE = "#0071E3";
 // NOTE: confirm this matches your actual route (check main.py's
 // app.include_router(...) prefix for the agent router). Defaulting to "/chat".
 const CHAT_ENDPOINT = "/agent/chat";
+
+// Tailwind resets paragraph spacing and list bullets, so restore them for markdown output.
+const mdComponents = {
+  p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+  ul: ({ children }) => <ul className="list-disc ml-5 mb-2">{children}</ul>,
+  ol: ({ children }) => <ol className="list-decimal ml-5 mb-2">{children}</ol>,
+};
 
 function getToken() {
   return localStorage.getItem("token");
@@ -90,7 +98,11 @@ export default function AIChat() {
               }`}
               style={msg.role === "user" ? { backgroundColor: APPLE_BLUE } : {}}
             >
-              {msg.text}
+              {msg.role === "assistant" && !msg.isError ? (
+                <ReactMarkdown components={mdComponents}>{msg.text}</ReactMarkdown>
+              ) : (
+                msg.text
+              )}
             </div>
           </div>
         ))}
